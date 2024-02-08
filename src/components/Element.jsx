@@ -4,14 +4,14 @@ import style from '../style/Element.module.css'
 
 // TODO: ПРОКИНУТЬ ЧЕРЕЗ ПРОПС ЗНАЧЕНИЕ ТЕКСТВОГО ПОЛЯ В VALUE
 
-const Element = ({text}) =>{
+const Element = ({text, getText}) =>{
 
     
     return(
         
         <Fragment>
             <div className={style.flex}>
-            <input type="text"  value={text} />
+            <input type="text"  value={text} onChange={getText} />
             
     
             <Button>Удалить</Button>

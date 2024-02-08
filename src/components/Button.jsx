@@ -1,9 +1,9 @@
 import { Fragment } from "react"
 import style from '../style/Button.module.css'
 
-const Button = ({children}) =>{
+const Button = ({children, onClick}) =>{
     return(
-        <button className={style.button}>{children}</button>
+        <button onClick={onClick} className={style.button}>{children}</button>
     )
 }
 
