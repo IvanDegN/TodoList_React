@@ -3,24 +3,13 @@ import style from '../style/AddElement.module.css'
 import Button from "./Button"
 
 
-const AddElement = ({name, id, data, onClick, getAddInput, textInAddInput}) =>{
+const AddElement = ({onClick, getAddInput, textInAddInput}) =>{
 
     
-    
-
-   
-
-    
-
-    
-
     return(
-        
             <Fragment>
             <div className={style.flex}>
             <input type="text" value={textInAddInput} onChange={getAddInput} />
-
-    
             <Button onClick={onClick}  >Добавить</Button>
             
     </div>

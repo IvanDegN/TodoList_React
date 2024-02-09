@@ -1,33 +1,40 @@
 import { Fragment, useState } from "react"
 import style from '../style/MainContent.module.css'
-import Button from "./Button"
 import Element from "./Element"
 import AddElement from "./AddElement"
 import data from '../data/data'
 
 
 const MainContent = () =>{
-    const [object, setObject] = useState([])
-    const [text, setText] = useState('');
+    const [d, setData] = useState([])
+    const [textInGetText, setText] = useState({text: ''});
     const [textInAddInput, setTextaddInput] = useState('');
 
     const getAddInput = (event) =>{
         const text = event.target.value
         console.log(text)
         setTextaddInput(text)
+        
     }
 
 
     const getText = (event) => {
        const text = event.target.value
-        console.log(text)
-        setText(text)
+        //console.log(text)
+        const editText = {text: text}
+        //setText(prev => [...prev, editText] )
+
+
+        
     }
 
     const onClick = () =>{
-        const newObj = {id: data.id, text: getText}
-       console.log( setObject([...object, newObj]));   
+         const newObj = {id: d.length, text: textInAddInput}
+         setData( prev => [...prev, newObj] )
+    }
 
+    const getNumber =  (num) => {
+       return Math.random(num)
     }
 
 
@@ -35,13 +42,13 @@ const MainContent = () =>{
 
     return(
         <Fragment>
-            <AddElement name={data.name} id={data.id} data={data} onClick={onClick} getAddInput={getAddInput} text={textInAddInput} />
+            <AddElement id={d.length} onClick={onClick} getAddInput={getAddInput} text={textInAddInput} />
             <div className={style.wrapper}>
                
             {/* // TODO: ВЫВЕСТИ СПИСОК КОМПОНЕНТОВ ЧЕРЕЗ ФУНКЦИЮ МАР() */}
-
-            {data.map(data => <Element key={data.id} text={data.text} getText={getText} /> )}
-            {object.map(object => <Element key={object.id} {...object.name} /> )}
+            {data.map(item => <Element key={getNumber(24)} text={item.text} id={item.length} getText={getText}  />)}
+            {d.map(data => <Element key={getNumber(42)} text={data.text}  /> )}
+            
                
             </div>
         </Fragment>
