@@ -7,38 +7,33 @@ import data from '../data/data'
 
 const MainContent = () =>{
     const [d, setData] = useState([])
-    const [textInGetText, setText] = useState({text: ''});
-    const [textInAddInput, setTextaddInput] = useState('');
-
+    const [textInAddInput, setTextaddInput] = useState("");
+    
     const getAddInput = (event) =>{
         const text = event.target.value
-        console.log(text)
+       
         setTextaddInput(text)
-        
+         
     }
 
-
     const getText = (event) => {
-       const text = event.target.value
-        //console.log(text)
-        const editText = {text: text}
-        //setText(prev => [...prev, editText] )
-
-
-        
+       const text = event.target.value  
     }
 
     const onClick = () =>{
-         const newObj = {id: d.length, text: textInAddInput}
-         setData( prev => [...prev, newObj] )
+         const newObj = {id: getNumber(24), text: textInAddInput, isDel: false}
+         setData([newObj, ...d] )
+         setTextaddInput("")
     }
 
     const getNumber =  (num) => {
        return Math.random(num)
     }
 
-
-
+    const delElement = (id) => {
+        let value = d.filter(e => e.id !== id)
+        setData(value)
+    }
 
     return(
         <Fragment>
@@ -46,10 +41,8 @@ const MainContent = () =>{
             <div className={style.wrapper}>
                
             {/* // TODO: ВЫВЕСТИ СПИСОК КОМПОНЕНТОВ ЧЕРЕЗ ФУНКЦИЮ МАР() */}
-            {data.map(item => <Element key={getNumber(24)} text={item.text} id={item.length} getText={getText}  />)}
-            {d.map(data => <Element key={getNumber(42)} text={data.text}  /> )}
-            
-               
+            {d.map(data => <Element key={data.id} text={data.text} del={delElement} id={data.id}  /> )}
+            {data.map(item => <Element key={item.id} text={item.text} id={item.length} getText={getText}  />)}
             </div>
         </Fragment>
     )   

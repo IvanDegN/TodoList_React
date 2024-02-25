@@ -4,7 +4,7 @@ import style from '../style/Element.module.css'
 
 // TODO: ПРОКИНУТЬ ЧЕРЕЗ ПРОПС ЗНАЧЕНИЕ ТЕКСТВОГО ПОЛЯ В VALUE
 
-const Element = ({text, getText, textInput}) =>{
+const Element = ({text, getText, textInput, onClick, del, id}) =>{
 
     
     return(
@@ -14,7 +14,7 @@ const Element = ({text, getText, textInput}) =>{
             <input type="text"  value={text}  onChange={getText}  />
             
     
-            <Button>Удалить</Button>
+            <Button onClick={() => {del(id)} }>Удалить</Button>
             <Button>Редактировать</Button>
             <Button>Сохранить</Button>
     </div>

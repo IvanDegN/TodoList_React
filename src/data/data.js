@@ -1,11 +1,13 @@
 const data = [
     {
     id: 0,
-    text: 'First comment'
+    text: 'First comment',
+    isDel: false
     },
     {
         id: 1,
-        text: 'Second comment'
+        text: 'Second comment',
+        isDel: false
         },
 ]
 
