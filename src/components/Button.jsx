@@ -3,7 +3,7 @@ import style from '../style/Button.module.css'
 
 const Button = ({children, onClick}) =>{
     return(
-        <button onClick={onClick} className={style.button}>{children}</button>
+        <button  onClick={onClick} className={style.button}>{children}</button>
     )
 }
 
